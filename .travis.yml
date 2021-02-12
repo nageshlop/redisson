@@ -1,0 +1,17 @@
+language: java
+sudo: false
+
+jdk:
+  - openjdk8
+  - openjdk15
+matrix:
+  jobs:
+    - jdk: openjdk15
+      arch: ppc64le
+      dist: focal
+    - jdk: openjdk8
+      arch: ppc64le
+      dist: focal
+script:
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn test -B
